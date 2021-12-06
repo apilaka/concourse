@@ -1,0 +1,21 @@
+---
+platform: linux
+
+image_resource:
+  type: registry-image
+  source:
+    repository: concourse
+    tag: 1
+
+inputs:
+- name: concourse
+
+caches:
+- path: concourse/
+
+params:
+  COVERALLS_TOKEN:
+  GIT_BRANCH: main
+
+run:
+  path: concourse/ci/test
